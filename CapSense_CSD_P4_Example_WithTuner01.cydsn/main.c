@@ -116,7 +116,8 @@ void WriteRawdataToInspectionReg(void)
     //CyGlobalIntDisable;
     
     //I2CRegisters.ButtonStatus = gbButtonMask;
-    I2CRegisters.ButtonStatus = CapSense_sensorOnMask[0];
+    I2CRegisters.ButtonStatus = CapSense_sensorOnMask[1] <<8;
+    I2CRegisters.ButtonStatus |= CapSense_sensorOnMask[0];
     /* Updates data(raw, diff, baseline) on I2C registers */
     for(i = 0; i < CapSense_TOTAL_SENSOR_COUNT; i++)
     {
